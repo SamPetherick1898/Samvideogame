@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body, html{
+    background-image: url("../Images/forsaken.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.caterminator{
+    width: 150px;
+    height: 100px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
