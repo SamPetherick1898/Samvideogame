@@ -11,18 +11,18 @@ img1.src = '../Images/kisspng-cat-steampunk-robot-felidae-science-fiction-cyber-
 ctx.drawImage(img1, 50, 80, 40, 60);
 
 img1.onload = function(){
-    ctx.drawImage(img1, 450, 325, 300, 171);
+    ctx.drawImage(img1, 450, 250, 280, 151);
   }
 
-// --------- SEÑORITA Y ---------
+/* --------- SEÑORITA Y ---------
 
 var img2 = new Image();
 img2.src = '../Images/pngwing.com.png';
 ctx.drawImage(img2, 120, 420);
 
 img2.onload = function(){
-    ctx.drawImage(img2, 380, 50, 500, 464);
-  }
+    ctx.drawImage(img2, 380, 280, 500, 464);
+  } */
 
 // --------- GATO ROBOT ---------
 
@@ -31,7 +31,7 @@ img3.src = '../Images/kisspng-whiskers-cat-kitten-robot-warriors-little-cat-5ae7
 ctx.drawImage(img3, 340, 420);
 
 img3.onload = function(){
-    ctx.drawImage(img3, 250, 350, 150, 155);
+    ctx.drawImage(img3, 250, 250, 150, 155);
   }
 
 // --------- SOLDADO ---------
@@ -41,5 +41,8 @@ img4.src = '../Images/kisspng-pixel-art-animation-soldier-pixel-art-5ac406df0183
 ctx.drawImage(img4, 620, 340);
 
 img4.onload = function(){
-    ctx.drawImage(img4, 0, 380, 150, 130);
+    ctx.drawImage(img4, 0, 280, 150, 130);
   }
+
+
+  //pantalla completa del canvas para ajustar las dimensiones

@@ -247,6 +247,10 @@ h1 {
     color: darkred;
 }
 
+/*.instrucciones .btn-open-popup:active{
+    display: none;
+}*/
+
 /*------------------------ Propiedades del botón Start ------------------------*/
 
 #btn3{
