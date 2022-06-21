@@ -126,7 +126,7 @@ h1 {
     }
 }
 
-/* Propiedades del botón popup 2 */
+/* Propiedades del botón evil history */
 
 .btn-open-popup{
     position: absolute;
@@ -243,12 +243,11 @@ h1 {
 
 /*------------------------ Propiedades del texto botón instructions ------------------------*/
 
-
 .insth1{
     color: darkred;
 }
 
-/*------------------------ Propiedades del botón History ------------------------*/
+/*------------------------ Propiedades del botón Start ------------------------*/
 
 #btn3{
     padding: 10px;
@@ -264,6 +263,8 @@ h1 {
     transform: translate(-50%, -50%);
     padding-left: 35px;
     padding-right: 35px;
+    display: block;
+    margin: 0 auto;
 }
 
 #btn3:hover{
@@ -273,7 +274,6 @@ h1 {
 
 .containerG {
     padding-top: 35%;
-    padding-left: 3%;
     display: flex;
     justify-content: space-around;
  }
