@@ -58,13 +58,13 @@ body, html{
 /*--------------------- C A N V A S ----------------------*/
 
 canvas{
-    background-image: url(../Images/escenario1.jpeg);
+    /*background-image: url(../Images/escenario1.jpeg);*/
     background-color: white;
     outline-style: outset;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 8px;
     border: 5PX solid;
-    margin-left: 16%;
-    margin-top: 6%;
+    margin-left: 8%;
+    margin-top: 3%;
 }

@@ -1,43 +1,28 @@
-//Propiedas del background-image
+const container = document.querySelector(".container")
 
-const img = new Image();
-img.src = '../Images/escenario1.peg';
+const canvas2 = document.getElementById('canvas');
+const ctx2 = canvas2.getContext('2d');
 
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+const fondo = new Image()
+fondo.src = '../Images/escenario1.jpeg'
 
-//Movimiento al eje x
-
-const backgroundImage = {
-  img: img,
-  x: 0,
-  speed: -1,
-
-  move: function() {
-    this.x += this.speed;
-    this.x %= canvas.width;
-  },
-
-//Propiedas de movimiento de mi canvas
-
-  draw: function() {
-    ctx.drawImage(this.img, this.x, 0, 1000, 600);
-    if (this.speed < 0) {
-      ctx.drawImage(this.img, this.x + canvas.width, 0, 1000, 600);
-    } else {
-      ctx.drawImage(this.img, this.x - this.img.width, 0, 1000, 600);
+class backgroundCanvas {
+    constructor(){
+        this.x = 0
+        this.y = 0
+        this.width = canvas2.width
+        this.height = canvas2.height
+        this.image = new Image()
+        this.image.src = "../Images/escenario1.jpeg"
     }
-  }
-};
-
-//clickOn OJO
-
-function miCanvas() {
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  backgroundImage.draw();
-  backgroundImage.move();
-  requestAnimationFrame(miCanvas);
+    draw(){
+        ctx2.drawImage(this.image,this.x,this.y,this.width,this.height)
+        console.log(this.image,this.x,this.y,this.width,this.height) //Vericamos si en realidad se están mandando los parámetros en el método
+        //ctx2.fillRect(0, 0, this.width, this.height) //cuadro
+    }
 }
 
-img.onload = miCanvas;
+fondo.onload = function() {
+    const background = new backgroundCanvas()
+    background.draw()
+}
