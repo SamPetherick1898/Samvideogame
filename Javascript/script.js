@@ -22,7 +22,8 @@ class backgroundCanvas {
     }
 }
 
+let background = new backgroundCanvas()
+
 fondo.onload = function() {
-    const background = new backgroundCanvas()
     background.draw()
 }
