@@ -6,13 +6,13 @@ let ctx = canvas.getContext('2d');
 
 // --------- GATO CIBERPUNK ---------
 
-let img1 = new Image();
-img1.src = '../Images/kisspng-cat-steampunk-robot-felidae-science-fiction-cyber-punk-5ae1d0de92aad6.2616667015247485106008.png';
+let gatito1 = new Image();
+gatito1.src = '../Images/kisspng-cat-steampunk-robot-felidae-science-fiction-cyber-punk-5ae1d0de92aad6.2616667015247485106008.png';
 
 // --------- GATO ROBOT ---------
 
-let img3 = new Image();
-img3.src = '../Images/kisspng-whiskers-cat-kitten-robot-warriors-little-cat-5ae77bf2152f73.5452126415251199860868.png';
+let gatito2 = new Image();
+gatito2.src = '../Images/kisspng-whiskers-cat-kitten-robot-warriors-little-cat-5ae77bf2152f73.5452126415251199860868.png';
 
 // --------- SOLDADO ---------
 
@@ -22,34 +22,18 @@ img4.src = '../Images/kisspng-pixel-art-animation-soldier-pixel-art-5ac406df0183
 
 // --------- bala ---------
 
-let img5 = new Image();
-img5.src = '../Images/bala.png';
+let balita = new Image();
+balita.src = '../Images/bala.png';
 
 ///////////////////////// ALMACENES ////////////////////////
 
 //gato 1
 
-const enemigo1 = []
-
-//gato 2
-
-const enemigo2 = []
-
+const enemigos = []
 
 // balas
 
-  const balas = []
-  
-  const balaImg = new Image()
-  balaImg.src = '../Images/bala.png'
-
-
-  balas.forEach( (bala) =>{
-    bala.x += 5
-    bala.dibujarse()
-  })
-
-
+const balas = []
 
   
 ///////////////////////// CLASES ////////////////////////
@@ -57,14 +41,13 @@ const enemigo2 = []
 
  // --------- Clase gatos ---------
 
-class Gatos {
+/*class Gatos {
     constructor(x, y, img, ctx, widthImg, heightImg){
         this.x = x
         this.y = y
         this.vida = 100
         this.velocidad = 3
         this.daño = 50
-        this.ctx = ctx
         this.img = img;
         this.widthImg = widthImg
         this.heightImg = heightImg
@@ -89,7 +72,7 @@ class Gatos {
     dibujarse(){
         this.ctx.drawImage(this.img, this.x, this.y, this.widthImg, this.heightImg)
     }
-}
+} */
 
 
  // --------- Clase bala ---------
@@ -125,7 +108,6 @@ class Gatos {
         this.img = img;
         this.widthImg = widthImg
         this.heightImg = heightImg
-        //this.soldierSelf()
     }
 
     recibirDaño(daño){
@@ -161,7 +143,7 @@ class Gatos {
 
 //Movimiento soldado
 
-const soldierA = new Soldado(0, 450, ctx, img4, 120, 140)
+const soldierA = new Soldado(0, 450, ctx, img4, 130, 140)
 
 movimientoEnMapa()
 
@@ -169,7 +151,7 @@ function movimientoEnMapa(){
 document.addEventListener("keydown", (event) => {
     switch(event.key){
         case " ":
-            const nuevaBala = soldierA.disparar(Soldado.x + 50, Soldado.y + 10, balaImg);
+            const nuevaBala = soldierA.disparar(Soldado.x + 50, Soldado.y + 10, balita);
             balas.push(nuevaBala)
             break;
         case "ArrowLeft":  
@@ -184,39 +166,70 @@ document.addEventListener("keydown", (event) => {
 })
 }
 
-//Gatos Ramdom
-
-const gatoA = new Gatos(0, 450, ctx, img1, 160, 180)
-
-function movimientoGato1A(){
-
-}
-
-/*function moverMapa(){
-    console.log("MapaMapa")
-    const soldadoc = new soldadoC(10, 50, ctx)
-    requestAnimationFrame(moverMapa)
-}*/
 
 
 function actualizarJuego(){
     ctx.clearRect(0, 0, 1200, 600)
     console.log("actualizando")
+    //const crearEnemigo = new gatoEnemigo1(0, 350, img1)
     background.draw()
     soldierA.dibujarse()
+
+/* enemigos.forEach((enemigos, index) => {
+        if (enemigos.x === Soldado.x + 50 && enemigos.y === Soldado.y){
+            Soldado.recibirDaño(50)
+            enemigos.splice(index, 1)
+        }                                   //si coloco esto desaparece el soldado
+    })*/
+
+    mostrarDatos(Soldado.vida, Soldado.x, Soldado.y)
     requestAnimationFrame(actualizarJuego)
+    //crearEnemigos()
 } //actualizacion del juego para el dibujo del juego
 
 actualizarJuego()
 
 // --------- Clase de los gatos ---------
 
-class gatoC extends Gato{
-    constructor(x, y, ctx, img, widthImg, heightImg){
-        super(x, y, ctx, img, widthImg, heightImg)
+class Enemigo1 extends Soldado{
+    constructor(x, y, ctx, image){
+        super(x, y, ctx, image)
     }
 }
 
-  //Mostrar algo tener un arreglo con la url de las imagenes y a partir del DOM (donde se tocan) 
-  //crear una funcion que dispare el modal para acceder a la imagen que tenga el src a alguna de las imaganes del array math.ramdom.length
-  //modal con la imagen ()
+function crearEnemigos(){
+const aleatorio = Math.floor(Math.random() * 60)
+const numeros = [1, 24, 35, 47, 56]
+if (numeros.includes(aleatorio)){
+    console.log("agrega enemigo")
+    let claseDeEnemigo = gatito1
+    if (aleatorio % 2 === 0){
+        claseDeEnemigo = gatito2
+    }
+    const enemigo = new Enemigos(860, 450, ctx, claseDeEnemigo)
+    enemigos.push(enemigo)
+}
+}
+
+
+balas.forEach((bala, indexBala) => {
+    bala.x += 2
+    bala.dibujarse()
+
+    enemigos.forEach((enemigo, indexEnemigo) => {
+        if (enemigo.x === bala.x || enemigo.x === bala.x + 1 || enemigo.x === bala.x - 1) {
+            enemigos.splice(indexEnemigo, 1)
+            balas.splice(indexBala, 1)
+            soldierA.kills++
+        }
+    })
+})
+
+
+// --------- Mostrar datos ---------
+
+function mostrarDatos(vida, x, y){
+    ctx.font = "30px Arial"
+    ctx.fillStyle = "white";
+    ctx.fillText(vida, 550, 30)
+}

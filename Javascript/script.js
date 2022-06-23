@@ -18,7 +18,6 @@ class backgroundCanvas {
     draw(){
         ctx2.drawImage(this.image,this.x,this.y,this.width,this.height)
         console.log(this.image,this.x,this.y,this.width,this.height) //Vericamos si en realidad se están mandando los parámetros en el método
-        //ctx2.fillRect(0, 0, this.width, this.height) //cuadro
     }
 }
 
