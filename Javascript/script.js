@@ -17,7 +17,7 @@ class backgroundCanvas {
     }
     draw(){
         ctx2.drawImage(this.image,this.x,this.y,this.width,this.height)
-        console.log(this.image,this.x,this.y,this.width,this.height) //Vericamos si en realidad se están mandando los parámetros en el método
+       // console.log(this.image,this.x,this.y,this.width,this.height) //Vericamos si en realidad se están mandando los parámetros en el método
     }
 }
 

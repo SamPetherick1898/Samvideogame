@@ -39,42 +39,6 @@ const balas = []
 ///////////////////////// CLASES ////////////////////////
 
 
- // --------- Clase gatos ---------
-
-/*class Gatos {
-    constructor(x, y, img, ctx, widthImg, heightImg){
-        this.x = x
-        this.y = y
-        this.vida = 100
-        this.velocidad = 3
-        this.daño = 50
-        this.img = img;
-        this.widthImg = widthImg
-        this.heightImg = heightImg
-    }
-
-    moverAdelante(){
-        this.x -= 150
-    }
-
-    recibirDaño(daño){
-        this.vida -= daño
-        console.log(daño)
-    }
-
-    vivo(){
-        if(this.vida > 0){
-            return true
-        }
-        return false
-    }
-
-    dibujarse(){
-        this.ctx.drawImage(this.img, this.x, this.y, this.widthImg, this.heightImg)
-    }
-} */
-
-
  // --------- Clase bala ---------
 
  class Bala {
@@ -86,11 +50,11 @@ const balas = []
     }
 
     moverAdelante(){
-        this.x -= 100
+        this.x += 1
     }
 
     dibujarse(){
-        this.ctx.drawImage(this.img, this.x, this.y, 100,200)
+        this.ctx.drawImage(this.img, this.x, this.y, 50,20)
     }
 }
 
@@ -108,6 +72,7 @@ const balas = []
         this.img = img;
         this.widthImg = widthImg
         this.heightImg = heightImg
+        this.kills = 0
     }
 
     recibirDaño(daño){
@@ -151,8 +116,10 @@ function movimientoEnMapa(){
 document.addEventListener("keydown", (event) => {
     switch(event.key){
         case " ":
-            const nuevaBala = soldierA.disparar(Soldado.x + 50, Soldado.y + 10, balita);
+            const nuevaBala = soldierA.disparar(soldierA.x + 100, soldierA.y + 40, balita);
             balas.push(nuevaBala)
+            console.log("disparar")
+            console.log(balas)
             break;
         case "ArrowLeft":  
             soldierA.moverAtras();
@@ -166,14 +133,16 @@ document.addEventListener("keydown", (event) => {
 })
 }
 
-
+let frame = 0
 
 function actualizarJuego(){
+    frame++
     ctx.clearRect(0, 0, 1200, 600)
-    console.log("actualizando")
-    //const crearEnemigo = new gatoEnemigo1(0, 350, img1)
     background.draw()
     soldierA.dibujarse()
+    if(frame % 100 == 0){
+        crearEnemigos()
+    }
 
 /* enemigos.forEach((enemigos, index) => {
         if (enemigos.x === Soldado.x + 50 && enemigos.y === Soldado.y){
@@ -182,10 +151,29 @@ function actualizarJuego(){
         }                                   //si coloco esto desaparece el soldado
     })*/
 
-    mostrarDatos(Soldado.vida, Soldado.x, Soldado.y)
+    balas.forEach((bala, indexbala) => {
+        bala.moverAdelante()
+        bala.dibujarse()
+        enemigos.forEach((enemigo, index) => {
+            if(enemigo.x < bala.x){
+                enemigos.splice(index, 1)
+                balas.splice(indexbala, 1)
+                soldierA.kills++
+            }
+        })
+    }) 
+
+    enemigos.forEach(enemigo =>{
+        enemigo.moverAtras()
+        enemigo.dibujarse()
+        if(enemigo.x == soldierA.x){
+            alert("se murio")
+        } 
+    })
+
+    mostrarDatos(soldierA.vida, soldierA.kills)
     requestAnimationFrame(actualizarJuego)
-    //crearEnemigos()
-} //actualizacion del juego para el dibujo del juego
+} 
 
 actualizarJuego()
 
@@ -193,22 +181,24 @@ actualizarJuego()
 
 class Enemigo1 extends Soldado{
     constructor(x, y, ctx, image){
-        super(x, y, ctx, image)
+        super(x, y, ctx, image, 150, 100)
+    }
+    moverAtras(){
+        this.x -= 2
     }
 }
 
+// --------- Crear enemigos ---------
+
 function crearEnemigos(){
-const aleatorio = Math.floor(Math.random() * 60)
-const numeros = [1, 24, 35, 47, 56]
-if (numeros.includes(aleatorio)){
-    console.log("agrega enemigo")
-    let claseDeEnemigo = gatito1
-    if (aleatorio % 2 === 0){
-        claseDeEnemigo = gatito2
-    }
-    const enemigo = new Enemigos(860, 450, ctx, claseDeEnemigo)
-    enemigos.push(enemigo)
-}
+    const aleatorio = Math.floor(Math.random() * 60)
+        let claseDeEnemigo = gatito1
+        if (aleatorio % 2 === 0){
+            claseDeEnemigo = gatito2
+        }
+        const enemigo = new Enemigo1(1200, 450, ctx, claseDeEnemigo)
+        enemigos.push(enemigo)
+        console.log(enemigos)
 }
 
 
@@ -228,8 +218,10 @@ balas.forEach((bala, indexBala) => {
 
 // --------- Mostrar datos ---------
 
-function mostrarDatos(vida, x, y){
+function mostrarDatos(vida, kills){
     ctx.font = "30px Arial"
     ctx.fillStyle = "white";
-    ctx.fillText(vida, 550, 30)
+    ctx.fillText(`Vida: ${vida}`, 550, 30)
+    ctx.fillText(`Muertes: ${kills}`, 700, 30)
 }
+
