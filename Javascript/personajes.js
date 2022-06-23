@@ -77,7 +77,6 @@ const balas = []
 
     recibirDaño(daño){
         this.vida -= daño
-        console.log(daño)
     }
 
     moverAdelante(){
@@ -119,17 +118,13 @@ document.addEventListener("keydown", (event) => {
             if(balas.length < 1){
             const nuevaBala = soldierA.disparar(soldierA.x + 100, soldierA.y + 40, balita);
             balas.push(nuevaBala)
-            console.log("disparar")
-            console.log(balas)
             }
             break;
         case "ArrowLeft":  
             soldierA.moverAtras();
-            console.log("atras")
             break;
         case "ArrowRight":
             soldierA.moverAdelante()
-            console.log("adelante");
             break;
     }
 })
@@ -192,7 +187,6 @@ function crearEnemigos(){
         }
         const enemigo = new Enemigo1(1200, 450, ctx, claseDeEnemigo)
         enemigos.push(enemigo)
-        console.log(enemigos)
 }
 
 
