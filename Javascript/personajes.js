@@ -108,7 +108,7 @@ const balas = []
 
 //Movimiento soldado
 
-const soldierA = new Soldado(0, 450, ctx, img4, 130, 140)
+const soldierA = new Soldado(600, 450, ctx, img4, 130, 140)
 
 movimientoEnMapa()
 
@@ -116,10 +116,12 @@ function movimientoEnMapa(){
 document.addEventListener("keydown", (event) => {
     switch(event.key){
         case " ":
+            if(balas.length < 1){
             const nuevaBala = soldierA.disparar(soldierA.x + 100, soldierA.y + 40, balita);
             balas.push(nuevaBala)
             console.log("disparar")
             console.log(balas)
+            }
             break;
         case "ArrowLeft":  
             soldierA.moverAtras();
@@ -143,14 +145,6 @@ function actualizarJuego(){
     if(frame % 100 == 0){
         crearEnemigos()
     }
-
-/* enemigos.forEach((enemigos, index) => {
-        if (enemigos.x === Soldado.x + 50 && enemigos.y === Soldado.y){
-            Soldado.recibirDaño(50)
-            enemigos.splice(index, 1)
-        }                                   //si coloco esto desaparece el soldado
-    })*/
-
     balas.forEach((bala, indexbala) => {
         bala.moverAdelante()
         bala.dibujarse()
@@ -167,7 +161,7 @@ function actualizarJuego(){
         enemigo.moverAtras()
         enemigo.dibujarse()
         if(enemigo.x == soldierA.x){
-            alert("se murio")
+            alert("Estás muerto")
         } 
     })
 

@@ -26,3 +26,11 @@ let background = new backgroundCanvas()
 fondo.onload = function() {
     background.draw()
 }
+
+
+//crear metodos: perder / ganar
+//primero meter texto
+//crear ctx mandar un fillText y los estilos para el texto (Game Over)
+//crear sus funciones: perder y ganar
+//dibujar dentro del background - mandarlo llamar para mostrarlo mandando el metodo
+//mandar llamar variable del fondo. ... metodo(perder)(ganar)
