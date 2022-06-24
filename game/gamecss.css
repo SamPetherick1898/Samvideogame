@@ -68,3 +68,12 @@ canvas{
     margin-left: 8%;
     margin-top: 3%;
 }
+
+
+/*--------------------- GAMEOVER ----------------------*/
+
+.oculto {
+    display: none;
+    /*padding-left: 30%;
+    padding-top: 6%; */
+}

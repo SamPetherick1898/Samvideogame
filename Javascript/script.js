@@ -28,6 +28,8 @@ fondo.onload = function() {
 }
 
 
+
+
 //crear metodos: perder / ganar
 //primero meter texto
 //crear ctx mandar un fillText y los estilos para el texto (Game Over)

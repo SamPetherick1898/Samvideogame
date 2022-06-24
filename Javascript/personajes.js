@@ -35,6 +35,10 @@ const enemigos = []
 
 const balas = []
 
+// IdFrame
+
+let IdFrame;
+
   
 ///////////////////////// CLASES ////////////////////////
 
@@ -152,16 +156,26 @@ function actualizarJuego(){
         })
     }) 
 
+    mostrarDatos(soldierA.vida, soldierA.kills)
+   IdFrame = requestAnimationFrame(actualizarJuego)
+
     enemigos.forEach(enemigo =>{
         enemigo.moverAtras()
         enemigo.dibujarse()
         if(enemigo.x == soldierA.x){
+            cancelAnimationFrame(IdFrame)
             alert("Estás muerto")
         } 
     })
 
-    mostrarDatos(soldierA.vida, soldierA.kills)
-    requestAnimationFrame(actualizarJuego)
+    if(soldierA.kills === 10){
+        cancelAnimationFrame(IdFrame)
+        //alert("ganaste")
+        let canvasShow = document.getElementById("canvas")
+        canvasShow.classList.add("oculto")
+        let gameOver = document.getElementById("gameover")
+        gameOver.classList.remove('oculto')
+    }
 } 
 
 actualizarJuego()
