@@ -49,6 +49,7 @@ h1 {
     visibility: visible;
     opacity: 1;
     position: relative;
+    z-index: 999;
 }
 
 .container-all1:target .popup1{

@@ -88,3 +88,23 @@ canvas{
     padding-left: 30%;
     padding-top: 6%;
 }
+
+#gameover3{
+    margin-left: 450px;
+    width: 750px;
+    height: 500px;
+    position: relative;
+    z-index: 999;
+    top: 100;
+    left: 100;
+}
+
+#gameover4{
+    margin-left: 450px;
+    width: 750px;
+    height: 500px;
+    position: relative;
+    z-index: 999;
+    top: 100;
+    left: 100;
+}

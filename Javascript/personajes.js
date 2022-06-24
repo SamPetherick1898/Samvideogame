@@ -166,12 +166,17 @@ function actualizarJuego(){
             cancelAnimationFrame(IdFrame)
             let canvasShow2 = document.getElementById("canvas")
             canvasShow2.classList.add("oculto2")
-            let gameOver2 = document.getElementById("gameover2")
+
+            const pos = [2, 3, 4]
+            const index = Math.floor(Math.random() * pos.length)
+            console.log(index)
+            let gameOver2 = document.getElementById("gameover" + pos[index])
             gameOver2.classList.remove('oculto2')
+            console.log(gameOver2)
         } 
     })
 
-    if(soldierA.kills === 15){
+    if(soldierA.kills === 10){
         cancelAnimationFrame(IdFrame)
         let canvasShow = document.getElementById("canvas")
         canvasShow.classList.add("oculto")
