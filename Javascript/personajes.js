@@ -164,18 +164,21 @@ function actualizarJuego(){
         enemigo.dibujarse()
         if(enemigo.x == soldierA.x){
             cancelAnimationFrame(IdFrame)
-            alert("Estás muerto")
+            let canvasShow2 = document.getElementById("canvas")
+            canvasShow2.classList.add("oculto2")
+            let gameOver2 = document.getElementById("gameover2")
+            gameOver2.classList.remove('oculto2')
         } 
     })
 
-    if(soldierA.kills === 10){
+    if(soldierA.kills === 15){
         cancelAnimationFrame(IdFrame)
-        //alert("ganaste")
         let canvasShow = document.getElementById("canvas")
         canvasShow.classList.add("oculto")
         let gameOver = document.getElementById("gameover")
         gameOver.classList.remove('oculto')
-    }
+    }  
+
 } 
 
 actualizarJuego()

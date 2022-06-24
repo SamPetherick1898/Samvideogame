@@ -58,7 +58,6 @@ body, html{
 /*--------------------- C A N V A S ----------------------*/
 
 canvas{
-    /*background-image: url(../Images/escenario1.jpeg);*/
     background-color: white;
     outline-style: outset;
     background-repeat: no-repeat;
@@ -74,6 +73,18 @@ canvas{
 
 .oculto {
     display: none;
-    /*padding-left: 30%;
-    padding-top: 6%; */
+}
+
+#gameover{
+    padding-left: 30%;
+    padding-top: 6%;
+}
+
+.oculto2{
+    display: none;
+}
+
+#gameover2{
+    padding-left: 30%;
+    padding-top: 6%;
 }
