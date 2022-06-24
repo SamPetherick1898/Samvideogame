@@ -212,4 +212,3 @@ function mostrarDatos(vida, kills){
     ctx.fillText(`Vida: ${vida}`, 550, 30)
     ctx.fillText(`Muertes: ${kills}`, 700, 30)
 }
-
